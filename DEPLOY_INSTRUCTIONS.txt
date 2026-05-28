@@ -1,0 +1,56 @@
+🚀 ИНСТРУКЦИЯ ПО ДЕПЛОЮ НА RAILWAY
+===================================
+
+ПРОБЛЕМА: Git зависает при попытке коммита
+
+РЕШЕНИЕ: Используй GitHub Desktop или выполни команды в отдельном терминале
+
+ВАРИАНТ 1: GitHub Desktop (самый простой)
+==========================================
+1. Открой GitHub Desktop
+2. Выбери репозиторий sigmaVPNN
+3. Нажми "Commit to main"
+4. Введи сообщение: "Fix app.py and restore website"
+5. Нажми "Push origin"
+6. Railway автоматически перестроится
+
+ВАРИАНТ 2: Командная строка (cmd.exe)
+======================================
+1. Открой cmd.exe (не PowerShell!)
+2. Перейди в папку: cd "C:\Users\Gnida222\Desktop\Сайт впн"
+3. Выполни команды:
+   git add -A
+   git commit -m "Fix app.py and restore website"
+   git push
+
+ВАРИАНТ 3: VS Code Terminal
+============================
+1. Открой VS Code
+2. Открой папку проекта
+3. Открой Terminal (Ctrl+`)
+4. Выполни команды:
+   git add -A
+   git commit -m "Fix app.py and restore website"
+   git push
+
+ПОСЛЕ ДЕПЛОЯ:
+=============
+1. Зайди на https://railway.app
+2. Открой проект sigmaVPNN
+3. Проверь статус развертывания (должно быть "Success")
+4. Откройи https://sigmaVPNN-production.up.railway.app/
+
+ФАЙЛЫ КОТОРЫЕ ИЗМЕНЕНЫ:
+=======================
+- app.py (исправлен поиск index.html)
+- style.css (создан)
+- main.js (создан)
+- index.html (восстановлен оригинальный)
+
+ЕСЛИ ЧТО-ТО НЕ РАБОТАЕТ:
+========================
+1. Проверь логи Railway: https://railway.app → Logs
+2. Убедись что Procfile содержит: web: python app.py
+3. Проверь что requirements.txt содержит Flask и Flask-CORS
+
+ГОТОВО! 🎉
