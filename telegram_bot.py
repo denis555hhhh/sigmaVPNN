@@ -302,16 +302,18 @@ async def confirm_payment(update: Update, context: ContextTypes.DEFAULT_TYPE):
             conn.close()
             
             text = f"""
-✅ **Спасибо за покупку!**
+🧡 **Спасибо за покупку!**
 
 Подписка активирована: {plan_info['name']}
 📅 Период: {plan_info['description']}
 📱 Устройств: {plan_info['devices']}
 
-🔗 **Ваш VPN конфиг:**
-Скоро будет отправлен в отдельном сообщении.
+**Чтобы получить VPN конфиг, напишите разработчику:**
 
-Если конфиг не пришёл, напишите админу: @sigmavpn_admin
+📧 **@slogg12** (Telegram)
+📧 **support@sigmavpn.com** (Email)
+
+Укажите ваш Telegram ID и выбранный тариф.
 """
         
         keyboard = [
@@ -454,7 +456,20 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await back_to_menu(update, context)
     except Exception as e:
         logger.error(f"Ошибка в обработчике кнопок: {e}")
-        await query.edit_message_text(f"❌ Ошибка: {str(e)}")
+        text = """
+🧡 **Спасибо за покупку!**
+
+Напишите разработчику, чтобы получить конфиг:
+
+📧 **@slogg12** (Telegram)
+📧 **support@sigmavpn.com** (Email)
+
+Укажите ваш Telegram ID и выбранный тариф.
+"""
+        try:
+            await query.edit_message_text(text, parse_mode='Markdown')
+        except:
+            pass
 
 # ==================== ЗАПУСК ====================
 def main():
